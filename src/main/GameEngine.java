@@ -1,30 +1,36 @@
 package main;
 
 import java.awt.Graphics;
-import java.util.ArrayList;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import render.RenderObject;
 import render.Renderer;
 import world.Entity;
 import world.Tile;
+import world.World;
 
 public class GameEngine {
 	private Graphics graphics;
-	private ArrayList<Entity> entityList;
-	private ArrayList<Tile> tileList;
 	private Renderer renderer;
+	private World world;
 	public GameEngine(Graphics g)
 	{
 		graphics = g;
-		entityList = new ArrayList<Entity>(0);
-		tileList = new ArrayList<Tile>(0);
+		world = new World();
 		renderer = new Renderer(g);
 	}
 	public static void main(String args [])
 	{
-		GameEngine g = new GameEngine(new JPanel().getGraphics());
+		JPanel j = new JPanel();
+		j.setSize(300, 300);
+		JFrame jf = new JFrame();
+		jf.setSize(300, 300);
+		jf.add(j);
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setVisible(true);
+		GameEngine g = new GameEngine(j.getGraphics());
 		g.addEntity();
 		g.addTile();
 	}
@@ -32,27 +38,19 @@ public class GameEngine {
 	{
 		Entity e = new Entity(this);
 		renderer.addToRenderList(new RenderObject(e));
-		entityList.add(e);
+		world.addEntity(e);
 		return e;
 	}
 	public Tile addTile()
 	{
 		Tile t = new Tile(this);
 		renderer.addToRenderList(new RenderObject(t));
-		tileList.add(t);
+		world.addTile(t);
 		return t;
 	}
 	public Graphics getGraphics()
 	{
 		return graphics;
-	}
-	public ArrayList<Entity> getEntities()
-	{
-		return entityList;
-	}
-	public ArrayList<Tile> getTiles()
-	{
-		return tileList;
 	}
 
 }
