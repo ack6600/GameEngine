@@ -9,10 +9,9 @@ public class Renderer {
 	private ArrayList<RenderObject> renderList;
 	public Renderer(Graphics g) {
 		graphics = g;
-		shouldRender = true;
+		shouldRender = false;
 		renderList = new ArrayList<RenderObject>(0);
 		renderList.add(new RenderObject());
-		main();
 	}
 	public void render(RenderObject rO)
 	{
@@ -22,6 +21,7 @@ public class Renderer {
 	public void addToRenderList(RenderObject rO)
 	{
 		renderList.add(rO);
+		System.out.println("object added");
 	}
 	public void main()
 	{
@@ -31,12 +31,16 @@ public class Renderer {
 			for(int i = 0;i<renderList.size();i++)
 			{
 				render(renderList.get(i));
-				System.out.println(i);
 			}
 		}
 	}
 	public void stopRenderer()
 	{
 		shouldRender = false;
+	}
+	public void start()
+	{
+		shouldRender = true;
+		this.main();
 	}
 }

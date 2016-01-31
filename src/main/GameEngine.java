@@ -20,6 +20,7 @@ public class GameEngine {
 		graphics = g;
 		world = new World();
 		renderer = new Renderer(g);
+//		renderer.start();
 	}
 	public static void main(String args [])
 	{
@@ -31,11 +32,13 @@ public class GameEngine {
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.setVisible(true);
 		GameEngine g = new GameEngine(j.getGraphics());
+		System.out.println("added in engine");
 		g.addEntity();
 		g.addTile();
 	}
 	public Entity addEntity()
 	{
+		System.out.println("added in engine");
 		Entity e = new Entity(this);
 		renderer.addToRenderList(new RenderObject(e));
 		world.addEntity(e);
@@ -43,6 +46,7 @@ public class GameEngine {
 	}
 	public Tile addTile()
 	{
+		System.out.println("added in engine");
 		Tile t = new Tile(this);
 		renderer.addToRenderList(new RenderObject(t));
 		world.addTile(t);
