@@ -20,7 +20,8 @@ public class GameEngine {
 		graphics = g;
 		world = new World();
 		renderer = new Renderer(g);
-//		renderer.start();
+		Thread render = new Thread(renderer);
+		render.start();
 	}
 	public static void main(String args [])
 	{

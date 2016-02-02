@@ -3,15 +3,14 @@ package render;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
-public class Renderer {
+public class Renderer implements Runnable{
 	private Graphics graphics;
 	private Boolean shouldRender;
 	private ArrayList<RenderObject> renderList;
 	public Renderer(Graphics g) {
 		graphics = g;
-		shouldRender = false;
+		shouldRender = true;
 		renderList = new ArrayList<RenderObject>(0);
-		renderList.add(new RenderObject());
 	}
 	public void render(RenderObject rO)
 	{
@@ -23,9 +22,13 @@ public class Renderer {
 		renderList.add(rO);
 		System.out.println("object added");
 	}
-	public void main()
+	public void stopRenderer()
 	{
-		System.out.println("hello");
+		shouldRender = false;
+	}
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
 		while(shouldRender)
 		{
 			for(int i = 0;i<renderList.size();i++)
@@ -33,14 +36,6 @@ public class Renderer {
 				render(renderList.get(i));
 			}
 		}
-	}
-	public void stopRenderer()
-	{
-		shouldRender = false;
-	}
-	public void start()
-	{
-		shouldRender = true;
-		this.main();
+		
 	}
 }
