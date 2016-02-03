@@ -1,6 +1,7 @@
 package render;
 
-import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 import world.Entity;
 import world.Tile;
@@ -8,26 +9,32 @@ import world.Tile;
 public class RenderObject {
 	private int width;
 	private int height;
-	private Color color;
-	public RenderObject(Tile t) {
+	private BufferedImage renderObjectTexture;
+	private int posX;
+	private int posY;
+	public RenderObject(Tile t) throws IOException {
 		// TODO Auto-generated constructor stub
 		width = RenderConstants.TILE_WIDTH;
 		height = RenderConstants.TILE_HEIGHT;
-		color = RenderConstants.TILE_COLOR;
+		renderObjectTexture = (new TextureManager(RenderConstants.TILE_FILE_PATH).getTexture());
+		posX = t.posX;
+		posY = t.posY;
 	}
 
-	public RenderObject(Entity e) {
+	public RenderObject(Entity e) throws IOException {
 		// TODO Auto-generated constructor stub
 		width = RenderConstants.ENTITY_WIDTH;
 		height = RenderConstants.ENTITY_HEIGHT;
-		color = RenderConstants.ENTITY_COLOR;
+		renderObjectTexture = (new TextureManager(RenderConstants.ENTITY_FILE_PATH).getTexture());
+		posX = e.posX;
+		posY = e.posY;
 	}
 	public RenderObject()
 	{
 		//for testing
 		width = 10;
 		height = 10;
-		color = Color.BLACK;
+//		renderObjectTexture = Color.BLACK;
 	}
 
 	public int getWidth() {
@@ -38,8 +45,16 @@ public class RenderObject {
 		return height;
 	}
 	
-	public Color getColor() {
-		return color;
+	public BufferedImage getColor() {
+		return renderObjectTexture;
+	}
+
+	public int getPosX() {
+		return posX;
+	}
+
+	public int getPosY() {
+		return posY;
 	}
 
 }

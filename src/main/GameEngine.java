@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Graphics;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,15 +16,13 @@ public class GameEngine {
 	private Graphics graphics;
 	private Renderer renderer;
 	private World world;
-	public GameEngine(Graphics g)
+	public GameEngine(JPanel j) throws IOException
 	{
-		graphics = g;
+		graphics = j.getGraphics();
 		world = new World();
-		renderer = new Renderer(g);
-		Thread render = new Thread(renderer);
-		render.start();
+		renderer = new Renderer(j);
 	}
-	public static void main(String args [])
+	public static void main(String args []) throws IOException
 	{
 		JPanel j = new JPanel();
 		j.setSize(300, 300);
@@ -32,23 +31,23 @@ public class GameEngine {
 		jf.add(j);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.setVisible(true);
-		GameEngine g = new GameEngine(j.getGraphics());
+		GameEngine g = new GameEngine(j);
 		System.out.println("added in engine");
-		g.addEntity();
-		g.addTile();
+		g.addEntity(50,50);
+		g.addTile(30,30);
 	}
-	public Entity addEntity()
+	public Entity addEntity(int x, int y) throws IOException
 	{
 		System.out.println("added in engine");
-		Entity e = new Entity(this);
+		Entity e = new Entity(this, x, y);
 		renderer.addToRenderList(new RenderObject(e));
 		world.addEntity(e);
 		return e;
 	}
-	public Tile addTile()
+	public Tile addTile(int x, int y) throws IOException
 	{
 		System.out.println("added in engine");
-		Tile t = new Tile(this);
+		Tile t = new Tile(this, x, y );
 		renderer.addToRenderList(new RenderObject(t));
 		world.addTile(t);
 		return t;
