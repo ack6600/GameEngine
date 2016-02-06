@@ -41,8 +41,8 @@ public class GameEngine {
 		jf.setVisible(true);
 		GameEngine g = new GameEngine(j,RenderConstants.REFRESH_RATE, file);
 		g.addObject(new StaticRenderObject(RenderConstants.ENTITY_FILE_PATH,0,0));
-		String[] textureLocations = {"C:/Users/Adam Urish/git/GameEngine/src/render/floor.png/","C:/Users/Adam Urish/git/GameEngine/src/render/entity.png"};
-		g.addObject(new AnimatedRenderObject(40, 40,textureLocations));
+		String[] textureLocations = {"src/textures/gnome0.png","src/textures/gnome1.png"};
+		g.addObject(new AnimatedRenderObject(40, 40,textureLocations,300));
 		GameEngine.log("object added in engine");
 	}
 	public Graphics getGraphics()

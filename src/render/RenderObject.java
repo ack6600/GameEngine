@@ -15,7 +15,14 @@ public abstract class RenderObject {
 	public int getPosX() {
 		return posX;
 	}
-
+	public void setX(int x)
+	{
+		posX = x;
+	}
+	public void setY(int y)
+	{
+		posY = y;
+	}
 	public int getPosY() {
 		return posY;
 	}

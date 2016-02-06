@@ -5,9 +5,9 @@ import java.io.IOException;
 
 public class AnimatedRenderObject extends RenderObject{
 	private BufferedImage[] frames;
-	private int frameOn;
-	private int maxFrame;
-	public AnimatedRenderObject(int x, int y, String[] filePaths) throws IOException 
+	private int delay;
+	private AnimationManager manager;
+	public AnimatedRenderObject(int x, int y, String[] filePaths, int delay) throws IOException 
 	{
 		super(x, y);
 		frames = new BufferedImage[filePaths.length];
@@ -15,24 +15,19 @@ public class AnimatedRenderObject extends RenderObject{
 		{
 			frames[i] = (new TextureManager(filePaths[i])).getTexture();
 		}
-		frameOn = 0;
-		maxFrame = frames.length;
+		manager = new AnimationManager(delay, frames);
+		Thread managerThread = new Thread(manager);
+		managerThread.start();
+		this.delay = delay;
 	}
-
+	public int getDelay()
+	{
+		return delay;
+	}
 	@Override
 	public BufferedImage getBufferedImage() 
 	{
-		
-		if(frameOn<maxFrame)
-		{
-			frameOn++;
-			return frames[frameOn-1];
-		}
-		else
-		{
-			frameOn = 0;
-			return frames[frameOn];
-		}
+		return manager.getFrameOn();
 	}
 
 }
