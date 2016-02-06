@@ -9,6 +9,7 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import render.AnimatedRenderObject;
 import render.RenderConstants;
 import render.RenderObject;
 import render.Renderer;
@@ -40,6 +41,8 @@ public class GameEngine {
 		jf.setVisible(true);
 		GameEngine g = new GameEngine(j,RenderConstants.REFRESH_RATE, file);
 		g.addObject(new StaticRenderObject(RenderConstants.ENTITY_FILE_PATH,0,0));
+		String[] textureLocations = {"C:/Users/Adam Urish/git/GameEngine/src/render/floor.png/","C:/Users/Adam Urish/git/GameEngine/src/render/entity.png"};
+		g.addObject(new AnimatedRenderObject(40, 40,textureLocations));
 		GameEngine.log("object added in engine");
 	}
 	public Graphics getGraphics()

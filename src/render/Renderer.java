@@ -114,32 +114,36 @@ public class Renderer implements Runnable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+			
 		}
 		if(calculate)
 		{
 		if(System.currentTimeMillis()-lastTime2<=1000)
 			{
 				delay = calculateDelay((System.currentTimeMillis()-lastTime2));
-				GameEngine.log("delay "+((System.currentTimeMillis()-lastTime2)));
-				GameEngine.log("compensatedDelay "+ delay);
+				calculate = false;
+				System.out.println("delay "+((System.currentTimeMillis()-lastTime2)));
+				System.out.println("compensatedDelay "+ delay);
 			}
 			else
 			{
 				delay--;
-				GameEngine.log("delay "+((int) (System.currentTimeMillis()-lastTime2)));
-				GameEngine.log("compensatedDelay "+ delay);
+				calculate = false;
+				System.out.println("delay "+((int) (System.currentTimeMillis()-lastTime2)));
+				System.out.println("compensatedDelay "+ delay);
 			}
 		}
-			if((System.currentTimeMillis()-lastTime2)>=1000)
-			{
-				
-				GameEngine.log("Frames " + frameOn);
-				lastTime2 = System.currentTimeMillis();
-				frameOn = 0;
-				calculate = true;
-				//nano
-//				lastNanoTime = System.nanoTime();
-			}
+		if((System.currentTimeMillis()-lastTime2)>=1000)
+		{
+			
+			GameEngine.log("Frames " + frameOn);
+			lastTime2 = System.currentTimeMillis();
+			frameOn = 0;
+			calculate = true;
+			//nano
+//			lastNanoTime = System.nanoTime();
+		}
 		}
 	}
 	public long calculateDelay(long extraTime)
