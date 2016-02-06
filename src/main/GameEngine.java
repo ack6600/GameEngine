@@ -30,21 +30,21 @@ public class GameEngine {
 		t.start();
 		GameEngine.log("Engine started");
 	}
-	public static void main(String args[]) throws IOException
-	{
-		JPanel j = new JPanel();
-		j.setSize(300, 300);
-		jf = new JFrame();
-		jf.setSize(300, 300);
-		jf.add(j);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setVisible(true);
-		GameEngine g = new GameEngine(j,RenderConstants.REFRESH_RATE, file);
-		g.addObject(new StaticRenderObject(RenderConstants.ENTITY_FILE_PATH,0,0));
-		String[] textureLocations = {"src/textures/gnome0.png","src/textures/gnome1.png"};
-		g.addObject(new AnimatedRenderObject(40, 40,textureLocations,300));
-		GameEngine.log("object added in engine");
-	}
+//	public static void main(String args[]) throws IOException
+//	{
+//		JPanel j = new JPanel();
+//		j.setSize(300, 300);
+//		jf = new JFrame();
+//		jf.setSize(300, 300);
+//		jf.add(j);
+//		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		jf.setVisible(true);
+//		GameEngine g = new GameEngine(j,RenderConstants.REFRESH_RATE, file);
+////		g.addObject(new StaticRenderObject(RenderConstants.ENTITY_FILE_PATH,0,0));
+//		String[] textureLocations = {"src/render/floor.png","src/render/entity.png"};
+//		g.addObject(new AnimatedRenderObject(40, 40,textureLocations,300));
+//		GameEngine.log("object added in engine");
+//	}
 	public Graphics getGraphics()
 	{
 		return graphics;
