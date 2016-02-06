@@ -1,21 +1,16 @@
 package render;
 
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-public class RenderObject {
-	private BufferedImage renderObjectTexture;
+public abstract class RenderObject {
 	private int posX;
 	private int posY;
-	public RenderObject(String texturePath, int x, int y) throws IOException
+	public RenderObject(int x, int y)
 	{
-		renderObjectTexture = (new TextureManager(texturePath)).getTexture();
 		posX = x;
 		posY = y;
 	}	
-	public BufferedImage getBufferedImage() {
-		return renderObjectTexture;
-	}
+	public abstract BufferedImage getBufferedImage();
 
 	public int getPosX() {
 		return posX;
