@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-import main.GameEngine;
+import main.RenderEngine;
 //import javax.swing.Timer;
 
 public class Renderer implements Runnable{
@@ -45,11 +45,11 @@ public class Renderer implements Runnable{
 	public void addToRenderList(RenderObject rO)
 	{
 		renderList.add(rO);
-		GameEngine.log("object added to renderlist");
+		RenderEngine.log("object added to renderlist");
 	}
 	public int calculateFrameRate(int fRate)
 	{
-//		GameEngine.log(fRate);
+//		RenderEngine.log(fRate);
 		for(int i = 0; i<lastFrameRates.length-1; i++)
 		{
 		lastFrameRates[i] = lastFrameRates[i+1];
@@ -76,16 +76,16 @@ public class Renderer implements Runnable{
 //			{
 //				delay++;
 //				nanoDelay = nanoDelay - 1000000;
-//				GameEngine.log("delay " + nanoDelay);
+//				RenderEngine.log("delay " + nanoDelay);
 //			}
 //			delay = delay/RenderConstants.REFRESH_RATE;
 //			nanoDelay = nanoDelay/RenderConstants.REFRESH_RATE;
-//			GameEngine.log("uncompensated nano delay " + (System.nanoTime()-lastNanoTime));
-//			GameEngine.log("nano delay "+nanoDelay);
-//			GameEngine.log("compensatedDelay "+ delay);
-//			GameEngine.log("nano reading " + System.nanoTime());
-//			GameEngine.log("last time " + lastNanoTime);
-//			GameEngine.log("frame rate "+frameRate);
+//			RenderEngine.log("uncompensated nano delay " + (System.nanoTime()-lastNanoTime));
+//			RenderEngine.log("nano delay "+nanoDelay);
+//			RenderEngine.log("compensatedDelay "+ delay);
+//			RenderEngine.log("nano reading " + System.nanoTime());
+//			RenderEngine.log("last time " + lastNanoTime);
+//			RenderEngine.log("frame rate "+frameRate);
 //			calculate = false;
 //		}
 
@@ -137,7 +137,7 @@ public class Renderer implements Runnable{
 		if((System.currentTimeMillis()-lastTime2)>=1000)
 		{
 			
-			GameEngine.log("Frames " + frameOn);
+			RenderEngine.log("Frames " + frameOn);
 			lastTime2 = System.currentTimeMillis();
 			frameOn = 0;
 			calculate = true;
