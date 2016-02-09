@@ -49,4 +49,6 @@ Temporary Items
 /.settings/
 /bin/
 *.iml
-/classes/
+/classes/	
+/build/
+/.gradle/
