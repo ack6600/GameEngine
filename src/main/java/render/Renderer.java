@@ -20,6 +20,7 @@ public class Renderer implements Runnable{
 	private int frameOn;
 	private long lastTime2;
 	private long delay;
+	private int refreshRate;
 //	private long lastNanoTime;
 //	private long nanoDelay;
 //	private long realNanoDelay;
@@ -28,6 +29,7 @@ public class Renderer implements Runnable{
 		graphics = j.getGraphics();
 		graphics.setPaintMode();
 		panel = j;
+		this.refreshRate = refreshRate;
 		renderList = new ArrayList<RenderObject>(0);
 		frameOn = 0;
 //		nanoDelay = 0;
@@ -89,7 +91,7 @@ public class Renderer implements Runnable{
 //			calculate = false;
 //		}
 
-		while(frameOn<RenderConstants.REFRESH_RATE)
+		while(frameOn<refreshRate)
 		{
 		steadyRate = calculateFrameRate((int) frameRate);
 		panel.update(graphics);
@@ -148,7 +150,7 @@ public class Renderer implements Runnable{
 	}
 	public long calculateDelay(long extraTime)
 	{
-		return extraTime/RenderConstants.REFRESH_RATE;
+		return extraTime/refreshRate;
 	}
 
 }
