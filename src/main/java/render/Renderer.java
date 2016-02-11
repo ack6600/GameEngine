@@ -123,15 +123,15 @@ public class Renderer implements Runnable{
 			{
 				delay = calculateDelay((System.currentTimeMillis()-lastTime2));
 				calculate = false;
-				System.out.println("delay "+((System.currentTimeMillis()-lastTime2)));
-				System.out.println("compensatedDelay "+ delay);
+				RenderEngine.log("delay "+((System.currentTimeMillis()-lastTime2)));
+				RenderEngine.log("compensatedDelay "+ delay);
 			}
 			else
 			{
 				delay--;
 				calculate = false;
-				System.out.println("delay "+((int) (System.currentTimeMillis()-lastTime2)));
-				System.out.println("compensatedDelay "+ delay);
+				RenderEngine.log("delay "+((int) (System.currentTimeMillis()-lastTime2)));
+				RenderEngine.log("compensatedDelay "+ delay);
 			}
 		}
 		if((System.currentTimeMillis()-lastTime2)>=1000)
