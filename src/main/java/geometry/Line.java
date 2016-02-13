@@ -17,14 +17,30 @@ public class Line
         double slope = calculateSlope(startPoint,endPoint);
         ArrayList<Point> pointList = new ArrayList<Point>();
         Point pointOn = new Point(startPoint.x,startPoint.y);
-        while()
+        int amount = 1;
+        pointList.add(pointOn);
+        while(pointOn.x<endPoint.x&&pointOn.y<endPoint.y)
         {
+            pointOn.translate(1,slope);
+            pointList.add(pointOn);
+            amount++;
 
         }
+        pointList.add(endPoint);
+        amount++;
+        points = new Point[amount];
+        for(int i = 0;i<amount;i++)
+        {
+            points[i] = pointList.get(i);
+        }
+    }
+    public Point[] getPoints()
+    {
+        return points;
     }
     private double calculateSlope(Point startPoint, Point endPoint)
     {
-        return ((endPoint.y-startPoint.y)/(endPoint.x/endPoint.y));
+        return ((endPoint.y-startPoint.y)/(endPoint.x-startPoint.x));
     }
 
 }

@@ -1,5 +1,6 @@
 package main;
 
+import geometry.Line;
 import render.RenderConstants;
 import render.RenderObject;
 import render.Renderer;
@@ -23,6 +24,14 @@ public class RenderEngine {
 		bFR = new BufferedWriter(new FileWriter(logfile));
 		t.start();
 		RenderEngine.log("Engine started");
+	}
+	public static void main(String[] args)
+	{
+		Line line = new Line(0,0,10,12);
+		for(int i = 0;i<line.getPoints().length;i++)
+		{
+			System.out.println(line.getPoints()[i].x);
+		}
 	}
 	public Graphics getGraphics()
 	{

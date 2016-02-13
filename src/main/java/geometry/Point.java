@@ -17,10 +17,4 @@ public class Point
         this.x += x;
         this.y += y;
     }
-    public boolean compare(Point toCompare)
-    {
-        return (this.x)
-    }
-
-
 }
