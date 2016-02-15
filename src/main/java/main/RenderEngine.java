@@ -27,10 +27,10 @@ public class RenderEngine {
 	}
 	public static void main(String[] args)
 	{
-		Line line = new Line(0,0,10,12);
+		Line line = new Line(0,0,10,40,true,2);
 		for(int i = 0;i<line.getPoints().length;i++)
 		{
-			System.out.println(line.getPoints()[i].x);
+			System.out.println(line.getPoints()[i].y);
 		}
 	}
 	public Graphics getGraphics()

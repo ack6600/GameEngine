@@ -1,16 +1,17 @@
 package render;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
+import geometry.BasicShape;
 import main.RenderEngine;
 //import javax.swing.Timer;
 
 public class Renderer implements Runnable{
 	private Graphics graphics;
-	private ArrayList<RenderObject> renderList;
+	private ArrayList<RenderObject> complexRenderList;
 	private long frameRate;
 	private long lastTime =  System.currentTimeMillis();
 	private JPanel panel;
@@ -30,7 +31,7 @@ public class Renderer implements Runnable{
 		graphics.setPaintMode();
 		panel = j;
 		this.refreshRate = refreshRate;
-		renderList = new ArrayList<RenderObject>(0);
+		complexRenderList = new ArrayList<RenderObject>(0);
 		frameOn = 0;
 //		nanoDelay = 0;
 		delay = startDelay;
@@ -46,8 +47,12 @@ public class Renderer implements Runnable{
 	}
 	public void addToRenderList(RenderObject rO)
 	{
-		renderList.add(rO);
+		complexRenderList.add(rO);
 		RenderEngine.log("object added to renderlist");
+	}
+	public void addBasicToRenderList(BasicShape basicShape)
+	{
+
 	}
 	public int calculateFrameRate(int fRate)
 	{
@@ -95,9 +100,9 @@ public class Renderer implements Runnable{
 		{
 		steadyRate = calculateFrameRate((int) frameRate);
 		panel.update(graphics);
-		for(int i = 0;i<renderList.size();i++)
+		for(int i = 0; i< complexRenderList.size(); i++)
 		{
-			render(renderList.get(i));
+			render(complexRenderList.get(i));
 		}
 		renderFrameRate();
 		try
